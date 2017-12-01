@@ -1,0 +1,14 @@
+.form-inline {
+    padding:15px;
+}
+.form-control {
+    margin-right: 15px;
+}
+.progress {
+    margin-left: 45px;
+    margin-right: 45px;
+}
+.alert {
+    margin-left: 190px;
+    margin-top: 10px;
+}

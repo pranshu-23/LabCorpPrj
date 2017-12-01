@@ -1,0 +1,23 @@
+<form class="form-inline" #tForm="ngForm">
+      <label for="temperature" class="control-label col-sm-4"><strong>Add Temperature: </strong></label>
+      <input name="temperature" id="temperature" type="number" class="form-control col-sm-5"
+            step='0.01' value='0' placeholder='Enter Temperature Value' 
+            min="-500.00" max="5000.00" required [(ngModel)]="temperature"
+            #myControl="ngModel">
+      <button type="submit" class="btn btn-outline-primary col-sm-2" 
+            (click)="addTemperature(temperature);tForm.reset()"
+            [disabled]="tempArrayLen == 8">Add</button>
+      <div [hidden]="myControl.valid || !myControl.touched || tempArrayLen == 8" class="alert alert-danger">
+            Temperature is required
+       </div>
+      <div *ngIf="tempArrayLen == 8" class="alert alert-danger">
+            Temperature Collection is Full!
+      </div>
+</form>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" 
+    [attr.aria-valuenow]="percentFull"
+    aria-valuemin="0" aria-valuemax="8" [style.width.%]="percentFull"> {{tempArrayLen}} / 8
+  </div>
+</div>
